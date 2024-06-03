@@ -1,32 +1,28 @@
+/* Generalno */
 body {
   font-family: 'Lato', sans-serif;
   font-size: 16px;
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  padding: 20px; /* Dodajemo padding na tijelo da bude bolje raspoređeno na mobilnim uređajima */
 }
 
+/* Container za filmove */
 .movie-container {
   width: 100%;
-  max-width: 800px; /* Postavljamo maksimalnu širinu na 800px */
+  max-width: 800px;
   margin: 0 auto;
 }
 
+/* Detalji filma */
 .movie-details {
   margin-top: -70px;
-  display: flex;
-  flex-direction: column;
   padding-left: 30px;
   padding-right: 40px;
   font-size: 15px;
-  font-family: 'Lato', sans-serif;
 }
 
+/* Kartica filma */
 .movie-card {
-  display: inline-block;
-  width: 100%;
   margin-bottom: 60px;
   position: relative;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -38,6 +34,7 @@ body {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Slika filma */
 .movie-image {
   max-height: 330px;
   object-fit: cover;
@@ -50,26 +47,68 @@ body {
   transform: scale(1.1);
 }
 
-.summary-wrapper {
-  display: flex;
-  align-items: baseline;
-}
-
-.ellipsis {
-  margin-left: 5px;
-}
-
+/* Pogledaj više */
 .view-more {
   position: absolute;
   bottom: 0;
   margin-bottom: 20px;
   font-size: 15px;
-  font-family: 'Lato', sans-serif;
 }
 
+/* Info o filmu */
 .movie-info {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-column-gap: 20px;
   align-items: center;
+}
+
+/* Stilizovanje search filtera i filtera */
+.search-filter {
+  width: 70%; /* Veća širina za search */
+  margin-bottom: 20px;
+}
+
+.filter {
+  width: 28%; /* Manja širina za sort */
+  margin-bottom: 20px;
+}
+
+.search-input, .mat-form-field {
+  width: 100%;
+}
+
+/* Omogućujemo da se search filter i filter uvijek nalaze u istom redu */
+.header {
+  display: flex;
+  width: 40%; /* Postavljamo širinu na 80% kako bi sadržaj bio centriran */
+  flex-wrap: nowrap; /* Sprečavamo prelazak na novi red */
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto; /* Centriramo element horizontalno */
+}
+
+/* Smanjujemo font i ostale dimenzije za search filter i filter */
+.search-label, .mat-form-field, .mat-form-field-wrapper, .mat-form-field-flex, .mat-select-trigger {
+  font-size: 14px; /* Smanjujemo font na 14 piksela */
+  padding: 6px 0; /* Dodajemo malo razmaka između elementa i ruba */
+}
+
+.header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.header button mat-icon {
+  vertical-align: middle;
+}
+
+/* Paginacija */
+.pagination {
+  float: right;
+  clear: both; /* Očisti floatove */
+  margin-top: 20px; /* Dodajemo razmak iznad paginacije */
 }

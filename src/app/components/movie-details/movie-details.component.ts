@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../../services/movie.service';
 import { MovieDetails } from '../../models/movie.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-details',
@@ -13,7 +14,8 @@ export class MovieDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private router: Router 
   ) { }
 
   ngOnInit(): void {
@@ -21,5 +23,9 @@ export class MovieDetailsComponent implements OnInit {
     this.movieService.getMovieDetails(id).subscribe((details: MovieDetails) => {
       this.movieDetails = details;
     });
+  }
+
+  goBackToList(): void {
+    this.router.navigate(['']);
   }
 }

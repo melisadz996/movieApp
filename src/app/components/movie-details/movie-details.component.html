@@ -1,10 +1,14 @@
-<div *ngIf="movieDetails" class="movie-details-container">
-    <h2>{{ movieDetails.name }}</h2>
-    <img [src]="movieDetails.image" alt="Movie Poster" class="moviePoster">
-    <p><strong>Genres:</strong> {{ movieDetails.genres.join(', ') }}</p>
-    <p><strong>Rating:</strong> {{ movieDetails.rating }}</p>
-    <p><strong>Language:</strong> {{ movieDetails.language }}</p>
-    <p><strong>Premiered:</strong> {{ movieDetails.premiered }}</p>
-    <p><strong>Summary:</strong> {{ movieDetails.summary }}</p>
+<div class="movie-details-container">
+    <button mat-raised-button color="primary" (click)="goBackToList()">Back to List</button>
+    <div *ngIf="movieDetails">
+      <img [src]="movieDetails.image" alt="Movie Poster" class="moviePoster">
+      <h1>{{ movieDetails.name }}</h1>
+      <p><strong>Genres:</strong> {{ movieDetails.genres.join(', ') }}</p>
+      <p><strong>Rating:</strong> {{ movieDetails.rating }}</p>
+      <p><strong>Language:</strong> {{ movieDetails.language }}</p>
+      <p><strong>Premiered:</strong> {{ movieDetails.premiered }}</p>
+      <p><strong>Summary:</strong> {{ movieDetails.summary }}</p>
+    </div>
+    <br>
   </div>
   
