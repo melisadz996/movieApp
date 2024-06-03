@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.moviePoster {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 10px;
+}
+
+.movie-details-container {
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto; /* Automatsko centriranje sadržaja */
+    margin-right: auto; /* Automatsko centriranje sadržaja */
+    text-align: left; /* Poravnanje teksta na lijevo */
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+}
+
+.movie-details-container img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.movie-details-container h2,
+.movie-details-container p {
+    margin-left: 0; /* Resetiranje margine */
+}

@@ -1,0 +1,24 @@
+<h1>Live Movie Search</h1>
+<mat-form-field>
+  <input matInput type="text" [(ngModel)]="searchText" (input)="applyFilter()" placeholder="Search...">
+</mat-form-field>
+
+<div class="movie-container">
+  <div *ngFor="let movie of filteredMovies" class="movie-card">
+    <mat-card>
+      <div class="movie-info">
+        <img mat-card-image [src]="movie.image" alt="{{ movie.name }}" class="movie-image"/>
+        <div class="movie-details">
+          <mat-card-title>{{ movie.name }}</mat-card-title>
+          <mat-card-subtitle>
+            <ul>
+              <li *ngFor="let genre of movie.genres"><strong>{{ genre }}</strong></li>
+            </ul>
+          </mat-card-subtitle>
+          <div class="summary">{{ movie.summary | slice:0:200 }}{{ movie.summary.length > 00 ? '...' : '' }}</div>
+          <button mat-raised-button color="primary" (click)="viewDetails(movie.id)" class="view-more">View More</button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>
