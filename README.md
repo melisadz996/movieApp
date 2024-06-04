@@ -1,27 +1,21 @@
-# MovieAppTask
+## Movie App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.14.
+### Description
+Movie App is an Angular application that allows users to search for movies in real-time using the TVMaze API. The application displays a list of search results and enables users to click on a movie to view detailed information about it.
 
-## Development server
+### Steps to Run the Application
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. **Node.js and npm**: First, you need to install Node.js and npm on your computer. If you don't already have Node.js installed, you can download it from [here](https://nodejs.org/).
 
-## Code scaffolding
+2. **Angular CLI**: Once you have Node.js and npm installed, install Angular CLI globally by running the following command:
+   ```
+   npm install -g @angular/cli
+   ```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. **Dependencies**: The application has several dependencies that will be installed by running the command `npm install`. This includes Angular modules such as `@angular/animations`, `@angular/common`, `@angular/forms`, and others listed in the `dependencies` section of the `package.json` file.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+4. **Running the Application**: After installing all the necessary dependencies, you can run the application by using the following command:
+   ```
+   ng serve
+   ```
+   This command will start a local development server and automatically open the application in your web browser.
