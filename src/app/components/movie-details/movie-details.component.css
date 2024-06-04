@@ -1,40 +1,45 @@
-body {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  button {
-    margin-bottom: 40px;
-    margin-top: 20px;
-  }
-  
-  .moviePoster {
-    width: 100%;
-    max-width: 350px;
-    margin-bottom: 10px;
-  }
-  
-  .movie-details-container {
-    width: 100%;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-    font-family: 'Lato', sans-serif;
-    font-size: 15px;
-  }
-  
-  .movie-details-container img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-  }
-  
-  .movie-details-container h2,
-  .movie-details-container p {
-    margin-left: 0;
-  }
-  
+ .moviePoster {
+     max-width: 40%;
+     margin: 40px;
+ }
+
+ button {
+     margin: 20px 0 20px 40px;
+ }
+
+ .movie-details-container {
+     width: 100%;
+     max-width: 1000px;
+     text-align: left;
+     font-family: 'Lato', sans-serif;
+     font-size: 15px;
+ }
+
+ .movie-details-container img {
+     width: 100%;
+     height: auto;
+     margin-right: 20px;
+ }
+
+ .movie-details-container h2,
+ .movie-details-container p {
+     margin-left: 0;
+ }
+
+ .loading-indicator {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100px;
+ }
+
+ .mat-spinner {
+     width: 50px;
+     height: 50px;
+ }
+
+ .error-message {
+     color: red;
+     font-size: 16px;
+     margin-top: 10px;
+ }

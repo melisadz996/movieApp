@@ -12,7 +12,14 @@ export class Movie {
     genres: string[] = [];
     summary: string = '';
     image: string = '';
-    premiered: string = '';
     language: string = '';
     rating: number = 0;
+    premieredFrom: string = '';
+    premieredTo: string = '';
+    channel: string = '';
+    previousEpisodeName: string = '';
+  previousEpisodeLink: string = '';
+  nextEpisodeName: string = '';
+  nextEpisodeLink: string = '';
   }
+

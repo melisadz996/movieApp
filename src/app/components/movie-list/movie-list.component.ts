@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-movie-list',
@@ -8,12 +10,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent implements OnInit {
+  loading: boolean = false;
   movies: any[] = [];
   filteredMovies: any[] = [];
   searchText: string = '';
   moviesPerPage: number = 5;
   currentPage: number = 1;
-  sortOrder: string = 'asc'; // Default sort order
+  sortOrder: string = 'asc';
+  errorMessage: string = '';
 
   constructor(private movieService: MovieService, private router: Router) {}
 
@@ -22,7 +26,15 @@ export class MovieListComponent implements OnInit {
   }
 
   fetchMovies() {
-    this.movieService.getMovies().subscribe((data: any[]) => {
+    this.loading = true;
+    this.errorMessage = '';
+    this.movieService.getMovies().pipe(
+      catchError(error => {
+        this.errorMessage = 'Error fetching movies. Please try again later.';
+        return throwError(error);
+      }),
+      finalize(() => this.loading = false)
+    ).subscribe((data: any[]) => {
       this.movies = data;
       this.filteredMovies = data;
     });
@@ -30,9 +42,17 @@ export class MovieListComponent implements OnInit {
 
   applyFilter() {
     if (this.searchText) {
-      this.movieService.searchMovies(this.searchText).subscribe((data: any[]) => {
+      this.loading = true;
+      this.errorMessage = '';
+      this.movieService.searchMovies(this.searchText).pipe(
+        catchError(error => {
+          this.errorMessage = 'Error searching for movies. Please try again later.';
+          return throwError(error);
+        }),
+        finalize(() => this.loading = false)
+      ).subscribe((data: any[]) => {
         this.filteredMovies = data;
-        this.currentPage = 1; // Reset current page when applying filter
+        this.currentPage = 1;
       });
     } else {
       this.filteredMovies = this.movies;

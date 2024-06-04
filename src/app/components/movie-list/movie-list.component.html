@@ -1,44 +1,59 @@
-<div class="header">
-  <div class="search-filter">
-    <mat-form-field class="search-input">
-      <mat-label class="search-label">Search by Name</mat-label>
-      <input matInput type="text" [(ngModel)]="searchText" (input)="applyFilter()" placeholder=" ">
-    </mat-form-field>
+<body style="background-color: #C0C0C0;">
+  <div class="header">
+    <div class="search-filter">
+      <!-- Search input -->
+      <mat-form-field class="search-input">
+        <mat-label class="search-label">Search by Name</mat-label>
+        <input matInput type="text" [(ngModel)]="searchText" (input)="applyFilter()" placeholder=" ">
+      </mat-form-field>
+    </div>
+
+    <div class="filter">
+      <!-- Sort select -->
+      <mat-form-field>
+        <mat-label>Sort by Name</mat-label>
+        <mat-select [(value)]="sortOrder" (selectionChange)="applySorting()">
+          <mat-option value="asc">A-Z</mat-option>
+          <mat-option value="desc">Z-A</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <br>
+  <!-- Error message -->
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <!-- Loading Indicators -->
+  <div *ngIf="loading" class="loading-indicator">
+    <mat-spinner></mat-spinner>
   </div>
 
-  <div class="filter">
-    <mat-form-field>
-      <mat-label>Sort by Name</mat-label>
-      <mat-select [(value)]="sortOrder" (selectionChange)="applySorting()">
-        <mat-option value="asc">A-Z</mat-option>
-        <mat-option value="desc">Z-A</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-</div>
-
-<div class="movie-container">
-  <div *ngFor="let movie of paginatedMovies" class="movie-card">
-    <mat-card>
-      <div class="movie-info">
-        <img mat-card-image [src]="movie.image" alt="{{ movie.name }}" class="movie-image"/>
-        <div class="movie-details">
-          <mat-card-title>{{ movie.name }}</mat-card-title>
-          <mat-card-subtitle>
-            <ul>
-              <li *ngFor="let genre of movie.genres"><strong>{{ genre }}</strong></li>
-            </ul>
-          </mat-card-subtitle>
-          <div class="summary">{{ movie.summary | slice:0:200 }}{{ movie.summary.length > 200 ? '...' : '' }}</div>
-          <button mat-raised-button color="primary" (click)="viewDetails(movie.id)" class="view-more">View More</button>
+  <!-- Movie cards -->
+  <div class="movie-container">
+    <div *ngFor="let movie of paginatedMovies" class="movie-card">
+      <mat-card>
+        <!-- Movie details -->
+        <div class="movie-info">
+          <img mat-card-image [src]="movie.image" alt="{{ movie.name }}" class="movie-image"/>
+          <div class="movie-details">
+            <mat-card-title>{{ movie.name }}</mat-card-title>
+            <mat-card-subtitle>
+              <ul>
+                <li *ngFor="let genre of movie.genres"><strong>{{ genre }}</strong></li>
+              </ul>
+            </mat-card-subtitle>
+            <div class="summary">{{ movie.summary | slice:0:200 }}{{ movie.summary.length > 200 ? '...' : '' }}</div>
+            <button mat-raised-button color="primary" (click)="viewDetails(movie.id)" class="view-more">View More</button>
+          </div>
         </div>
-      </div>
-    </mat-card>
+      </mat-card>
+    </div>
   </div>
-</div>
 
-<div class="pagination">
-  <button mat-button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
-  <span style="margin: 0 10px;">Page {{ currentPage }} of {{ totalPages }}</span>
-  <button mat-button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
-</div>
+  <!-- Pagination -->
+  <div class="pagination">
+    <button mat-button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span style="margin: 0 10px;">Page {{ currentPage }} of {{ totalPages }}</span>
+    <button mat-button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</body>

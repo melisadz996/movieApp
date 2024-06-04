@@ -1,14 +1,30 @@
-<div class="movie-details-container">
+<body style="background-color: #C0C0C0;">
     <button mat-raised-button color="primary" (click)="goBackToList()">Back to List</button>
-    <div *ngIf="movieDetails">
-      <img [src]="movieDetails.image" alt="Movie Poster" class="moviePoster">
-      <h1>{{ movieDetails.name }}</h1>
-      <p><strong>Genres:</strong> {{ movieDetails.genres.join(', ') }}</p>
-      <p><strong>Rating:</strong> {{ movieDetails.rating }}</p>
-      <p><strong>Language:</strong> {{ movieDetails.language }}</p>
-      <p><strong>Premiered:</strong> {{ movieDetails.premiered }}</p>
-      <p><strong>Summary:</strong> {{ movieDetails.summary }}</p>
+    <div class="movie-details-container">
+      <div *ngIf="loading" class="loading-indicator">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+      <div *ngIf="!loading && !errorMessage && movieDetails" style="display: flex; align-items: center;">
+        <img [src]="movieDetails.image" alt="Movie Poster" class="moviePoster">
+        <div>
+          <h1 *ngIf="movieDetails.name">{{ movieDetails.name }}</h1>
+          <ul>
+            <li *ngFor="let genre of movieDetails.genres"><strong>{{ genre }}</strong></li>
+          </ul>          
+          <p *ngIf="movieDetails.rating"><strong>Rating:</strong> {{ movieDetails.rating }}</p>
+          <p *ngIf="movieDetails.language"><strong>Language:</strong> {{ movieDetails.language }}</p>
+          <p *ngIf="movieDetails.premieredFrom"><strong>Premiered From:</strong> {{ movieDetails.premieredFrom }}</p>
+          <p *ngIf="movieDetails.premieredTo"><strong>Premiered To:</strong> {{ movieDetails.premieredTo }}</p>
+          <p *ngIf="movieDetails.channel"><strong>Channel:</strong> {{ movieDetails.channel }}</p>
+          <p *ngIf="movieDetails.summary"><strong>Summary:</strong> {{ movieDetails.summary }}</p>
+          <p *ngIf="movieDetails.previousEpisodeLink"><strong>Previous Episode:</strong> <a [href]="movieDetails.previousEpisodeLink">{{ movieDetails.previousEpisodeName }}</a></p>
+          <p *ngIf="movieDetails.nextEpisodeLink"><strong>Next Episode:</strong> <a [href]="movieDetails.nextEpisodeLink">{{ movieDetails.nextEpisodeName }}</a></p>
+        </div>
+      </div>
+      <br>
     </div>
-    <br>
-  </div>
+  </body>
   
