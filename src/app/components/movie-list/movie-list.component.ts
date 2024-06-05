@@ -30,7 +30,7 @@ export class MovieListComponent implements OnInit {
     this.errorMessage = '';
     this.movieService.getMovies().pipe(
       catchError(error => {
-        this.errorMessage = 'Error fetching movies. Please try again later.';
+        this.errorMessage = `Error fetching movies: ${error.message}. Please try again later.`;
         return throwError(error);
       }),
       finalize(() => this.loading = false)
@@ -46,7 +46,7 @@ export class MovieListComponent implements OnInit {
       this.errorMessage = '';
       this.movieService.searchMovies(this.searchText).pipe(
         catchError(error => {
-          this.errorMessage = 'Error searching for movies. Please try again later.';
+          this.errorMessage = `Error searching for movies: ${error.message}. Please try again later.`;
           return throwError(error);
         }),
         finalize(() => this.loading = false)
